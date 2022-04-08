@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">oblig3_henrik</string>
+    <string name="deleteYes">Image was successfully deleted</string>
+    <string name="deleteNo">Image deletion failed</string>
+    <string name="editYes">"Title was set to: "</string>
+    <string name="editNo">Title was not changed</string>
+
+</resources>

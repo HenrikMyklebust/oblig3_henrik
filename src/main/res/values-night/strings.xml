@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deleteYes">Image was successfully deleted</string>
+    <string name="deleteNo">Image deletion failed</string>
+    <string name="editYes">"Title was set to: "</string>
+</resources>
