@@ -5,7 +5,7 @@
     <data>
         <variable
             name="user"
-            type="com.example.oblig3_henrik.ui.main.users.User" />
+            type="com.example.oblig3_henrik.domain.DevByteUser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

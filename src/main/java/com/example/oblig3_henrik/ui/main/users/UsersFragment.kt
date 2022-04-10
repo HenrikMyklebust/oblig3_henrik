@@ -7,12 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oblig3_henrik.R
 import com.example.oblig3_henrik.databinding.FragmentUsersBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class UsersFragment : Fragment() {
     private lateinit var binding: FragmentUsersBinding
@@ -24,9 +21,7 @@ class UsersFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_users, container, false)
         viewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.downloadUsers()
-        }
+        viewModel.refreshDataFromRepository()
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 

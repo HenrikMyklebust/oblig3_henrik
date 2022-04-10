@@ -33,7 +33,7 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
         viewModel = ViewModelProvider(this).get(PhotoViewModel::class.java)
         val url = GlideUrl(
             args.photo.url, LazyHeaders.Builder()
-                .addHeader("User-Agent", "android")
+                .addHeader("JsonUser-Agent", "android")
                 .build()
         )
         Glide.with(this).load(url).into(binding.photo)

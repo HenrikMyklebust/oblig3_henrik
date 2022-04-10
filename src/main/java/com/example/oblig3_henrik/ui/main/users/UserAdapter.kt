@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oblig3_henrik.databinding.UserLineBinding
+import com.example.oblig3_henrik.domain.DevByteUser
 
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    var users: MutableList<User> = mutableListOf()
+    var users: List<DevByteUser> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(
@@ -29,17 +30,17 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         holder.bind(users[position])
     }
 
-    fun setUserListItems(users: MutableList<User>) {
+    fun setUserListItems(users: List<DevByteUser>) {
         this.users = users
         notifyDataSetChanged()
     }
 
     class UserViewHolder(private val binding: UserLineBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
-            binding.user = user
+        fun bind(devByteUser: DevByteUser) {
+            binding.user = devByteUser
             binding.userLine.setOnClickListener {
-                val action = UsersFragmentDirections.actionUsersFragmentToAlbumFragment(user.id)
+                val action = UsersFragmentDirections.actionUsersFragmentToAlbumFragment(devByteUser.id)
                 Navigation.findNavController(binding.root).navigate(action)
             }
         }

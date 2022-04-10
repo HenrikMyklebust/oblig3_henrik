@@ -1,10 +1,15 @@
-package com.example.oblig3_henrik.ui.main.users
+package com.example.oblig3_henrik.network
 
+import com.example.oblig3_henrik.database.DatabaseUser
+import com.example.oblig3_henrik.domain.DevByteUser
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class User(
+data class NetworkUserContainer(val users: List<NetworkUser>)
+
+@JsonClass(generateAdapter = true)
+data class NetworkUser(
     @Json(name = "id") val id: String,
     @Json(name = "name") val name: String,
     @Json(name = "username") val username: String,
@@ -37,4 +42,22 @@ data class Company(
     @Json(name = "bs") val bs: String
 )
 
+fun NetworkUserContainer.asDomainModel(): List<DevByteUser> {
+    return users.map {
+        DevByteUser(
+            id = it.id,
+            name = it.name,
+            email = it.email
+        )
+    }
+}
 
+fun NetworkUserContainer.asDatabaseModel(): List<DatabaseUser> {
+    return users.map {
+        DatabaseUser(
+            id = it.id,
+            name = it.name,
+            email = it.email
+        )
+    }
+}

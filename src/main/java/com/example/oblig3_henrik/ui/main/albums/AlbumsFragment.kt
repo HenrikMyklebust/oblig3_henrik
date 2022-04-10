@@ -28,9 +28,7 @@ class AlbumsFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_albums, container, false)
         viewModel = ViewModelProvider(this).get(AlbumsViewModel::class.java)
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.downloadAlbums(args.userId)
-        }
+        viewModel.downloadAlbums(args.userId)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 

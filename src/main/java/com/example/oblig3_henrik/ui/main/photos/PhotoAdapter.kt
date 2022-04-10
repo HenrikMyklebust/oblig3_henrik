@@ -42,7 +42,7 @@ class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.PhotosViewHolder>() {
             binding.photo = photo
             val url = GlideUrl(
                 photo.thumbnailUrl, LazyHeaders.Builder()
-                    .addHeader("User-Agent", "android")
+                    .addHeader("JsonUser-Agent", "android")
                     .build()
             )
             Glide.with(itemView.context).load(url).into(binding.ivThumbnail)
