@@ -13,7 +13,6 @@ data class DatabaseUser constructor(
 )
 
 
-
 fun List<DatabaseUser>.asDomainModel(): List<DevByteUser> {
     return map {
         DevByteUser(

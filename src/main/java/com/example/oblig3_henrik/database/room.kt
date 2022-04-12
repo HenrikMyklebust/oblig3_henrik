@@ -14,7 +14,7 @@ interface UserDao {
 }
 
 @Database(entities = [DatabaseUser::class], version = 1)
-abstract class UsersDatabase: RoomDatabase() {
+abstract class UsersDatabase : RoomDatabase() {
     abstract val UserDao: UserDao
 }
 
@@ -23,9 +23,11 @@ private lateinit var INSTANCE: UsersDatabase
 fun getDatabase(context: Context): UsersDatabase {
     synchronized(UsersDatabase::class.java) {
         if (!::INSTANCE.isInitialized) {
-            INSTANCE = Room.databaseBuilder(context.applicationContext,
-            UsersDatabase::class.java,
-            "users").build()
+            INSTANCE = Room.databaseBuilder(
+                context.applicationContext,
+                UsersDatabase::class.java,
+                "users"
+            ).build()
         }
     }
     return INSTANCE

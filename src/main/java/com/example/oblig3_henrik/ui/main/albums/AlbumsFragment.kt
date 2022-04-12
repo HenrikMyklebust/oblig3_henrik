@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oblig3_henrik.R
 import com.example.oblig3_henrik.databinding.FragmentAlbumsBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class AlbumsFragment : Fragment() {
@@ -36,8 +33,9 @@ class AlbumsFragment : Fragment() {
         binding.rvAlbums.adapter = adapter
         binding.rvAlbums.layoutManager = LinearLayoutManager(context)
 
-        viewModel.albums.observe(viewLifecycleOwner) { adapter.setAlbumListItems(viewModel.albums.value!!) }
-
+        viewModel.albums.observe(viewLifecycleOwner) {
+            adapter.setAlbumListItems(viewModel.albums.value!!)
+        }
         return binding.root
     }
 }

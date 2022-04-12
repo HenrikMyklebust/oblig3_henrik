@@ -33,7 +33,7 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
         viewModel = ViewModelProvider(this).get(PhotoViewModel::class.java)
         val url = GlideUrl(
             args.photo.url, LazyHeaders.Builder()
-                .addHeader("JsonUser-Agent", "android")
+                .addHeader("User-Agent", "android")
                 .build()
         )
         Glide.with(this).load(url).into(binding.photo)
@@ -43,7 +43,7 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.toolbar_meny, menu)
+        inflater.inflate(R.menu.photo_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

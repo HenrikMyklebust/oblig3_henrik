@@ -8,7 +8,7 @@ import com.example.oblig3_henrik.databinding.AlbumLineBinding
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumsViewHolder>() {
 
-    var albums: MutableList<Album> = mutableListOf()
+    var albums: List<Album> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumsViewHolder {
         return AlbumsViewHolder(
@@ -28,7 +28,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumsViewHolder>() {
         holder.bind(albums[position])
     }
 
-    fun setAlbumListItems(albums: MutableList<Album>) {
+    fun setAlbumListItems(albums: List<Album>) {
         this.albums = albums
         notifyDataSetChanged()
     }

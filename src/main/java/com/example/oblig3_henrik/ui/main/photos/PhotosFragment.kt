@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oblig3_henrik.R
 import com.example.oblig3_henrik.databinding.FragmentPhotosBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class PhotosFragment : Fragment(R.layout.fragment_photos) {
@@ -28,9 +25,8 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_photos, container, false)
         viewModel = ViewModelProvider(this).get(PhotosViewModel::class.java)
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.downloadPhotos(args.albumId)
-        }
+        viewModel.downloadPhotos(args.albumId)
+
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
