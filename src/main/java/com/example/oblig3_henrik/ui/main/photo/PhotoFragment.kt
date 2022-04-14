@@ -43,7 +43,7 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.toolbar_meny, menu)
+        inflater.inflate(R.menu.photo_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

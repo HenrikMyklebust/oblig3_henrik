@@ -1,36 +1,28 @@
 package com.example.oblig3_henrik.ui.main.users
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.oblig3_henrik.ui.main.RetrofitInterface
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.oblig3_henrik.ServiceLocator
+import kotlinx.coroutines.launch
 
 
-class UsersViewModel : ViewModel() {
+class UsersViewModel(application: Application) : AndroidViewModel(application) {
 
-    var users = MutableLiveData<MutableList<User>>()
+    private val userRepository = ServiceLocator.provideUserRepository(application)
+    val users = userRepository.users
 
-    suspend fun downloadUsers() {
-        withContext(Dispatchers.IO) {
-            val retrofitInterface = RetrofitInterface.create().getUsers()
 
-            retrofitInterface.enqueue(object : Callback<List<User>> {
-                override fun onResponse(
-                    call: Call<List<User>>?,
-                    response: Response<List<User>>?
-                ) {
-                    if (response?.body() != null) {
-                        users.value = (response.body() as MutableList<User>?)!!
-                    }
-                }
+    fun databaseEmpty() {
+        if (users.value == null)
+            refreshDataFromRepository()
+    }
 
-                override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                }
-            })
+    fun refreshDataFromRepository() {
+        viewModelScope.launch {
+            userRepository.refreshUsers()
         }
     }
+
+
 }

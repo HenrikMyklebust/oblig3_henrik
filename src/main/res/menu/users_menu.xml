@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/menuRefresh"
+        android:title="Refresh users"
+        android:icon="@drawable/ic_refresh"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menuSettings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menuAbout"
+        android:title="about us"
+        android:icon="@drawable/ic_about"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menuExit"
+        android:title="Exit app"
+        android:icon="@drawable/ic_exit"
+        app:showAsAction="always"/>
+</menu>

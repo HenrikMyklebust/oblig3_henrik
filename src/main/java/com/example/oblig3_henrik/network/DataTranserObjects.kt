@@ -1,10 +1,11 @@
-package com.example.oblig3_henrik.ui.main.users
+package com.example.oblig3_henrik.network
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+
 @JsonClass(generateAdapter = true)
-data class User(
+data class NetworkUser(
     @Json(name = "id") val id: String,
     @Json(name = "name") val name: String,
     @Json(name = "username") val username: String,
@@ -36,5 +37,3 @@ data class Company(
     @Json(name = "catchPhrase") val catchPhrase: String,
     @Json(name = "bs") val bs: String
 )
-
-

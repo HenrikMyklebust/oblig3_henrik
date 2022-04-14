@@ -31,8 +31,10 @@ class MainActivity : AppCompatActivity() {
             title = when (destination.id) {
                 R.id.usersFragment -> "Users"
                 R.id.albumFragment -> "Albums"
-                R.id.photosFragment -> "Images"
-                R.id.photoFragment -> "Image"
+                R.id.photosFragment -> "Images in album"
+                R.id.photoFragment -> ""
+                R.id.settingsFragment -> "Settings"
+                R.id.aboutFragment -> "About"
                 else -> "Default"
             }
         }
